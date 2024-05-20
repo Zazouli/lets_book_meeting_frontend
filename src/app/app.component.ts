@@ -47,45 +47,45 @@ export class AppComponent implements OnInit, OnDestroy {
         takeUntil(this._destroying$)
       )
       .subscribe(() => {
-        const accounts = this.authService.instance.getAllAccounts();
-        if (accounts.length > 0) {
-          this.authService.instance.acquireTokenSilent({
-            scopes: ['getScopeFromFile'],
-            account: accounts[0]
-          }).then((response: AuthenticationResult) => {
-            this.token = response.accessToken;
-            const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-            this.http.get(`${environment.apiUrl}WeatherForecast`, { headers: headers })
-            .subscribe(
-                      data => console.log('API response:', data),
-                      error => console.error('API error:', error)
-          );
-            console.log('Access Token:', response.accessToken);
-            // Send this token to your backend
-          }).catch(error => {
-            console.error(error);
-          });
-        }
+        // const accounts = this.authService.instance.getAllAccounts();
+        // if (accounts.length > 0) {
+        //   // this.authService.instance.acquireTokenSilent({
+        //   //   scopes: ['api://8b70fd3b-18ce-4d8e-a91f-dbb5cf889c95/access_as_user'],
+        //   //   account: accounts[0]
+        //   // }).then((response: AuthenticationResult) => {
+        //   //   this.token = response.accessToken;
+        //   //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+        //   //   this.http.get(`${environment.apiUrl}WeatherForecast`, { headers: headers })
+        //   //   .subscribe(
+        //   //             data => console.log('API response:', data),
+        //   //             error => console.error('API error:', error)
+        //   // );
+        //   //   console.log('Access Token:', response.accessToken);
+        //   //   // Send this token to your backend
+        //   // }).catch(error => {
+        //   //   console.error(error);
+        //   // });
+        // }
         this.setLoginDisplay();
         this.checkAndSetActiveAccount();
       });
       
-      this.msalBroadcastService.msalSubject$
-      .pipe(
-        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
-      )
-      .subscribe((result: EventMessage) => {
-        console.log(result);
-        const payload = result.payload as AuthenticationResult;
-        console.log(payload.accessToken)
-          const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-          this.http.get(`${environment.apiUrl}WeatherForecast`, { headers: headers })
-          .subscribe(
-                    data => console.log('API response:', data),
-                    error => console.error('API error:', error)
-        );
-        //this.authService.instance.setActiveAccount(payload.account);
-      });
+    //   this.msalBroadcastService.msalSubject$
+    //   .pipe(
+    //     filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
+    //   )
+    //   .subscribe((result: EventMessage) => {
+    //     console.log(result);
+    //     const payload = result.payload as AuthenticationResult;
+    //     console.log(payload.accessToken)
+    //       const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    //       this.http.get(`${environment.apiUrl}WeatherForecast`, { headers: headers })
+    //       .subscribe(
+    //                 data => console.log('API response:', data),
+    //                 error => console.error('API error:', error)
+    //     );
+    //     //this.authService.instance.setActiveAccount(payload.account);
+    //   });
   }
 
   setLoginDisplay() {

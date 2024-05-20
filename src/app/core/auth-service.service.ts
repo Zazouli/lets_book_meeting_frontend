@@ -7,10 +7,14 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class AuthService {
-    constructor(private msalService: MsalService) {}
+    constructor(private authService: MsalService) {}
 
-    getAccessToken(): Observable<any> {
-        const scopes = [`api://${environment.msalConfig.auth.clientId}/user.read`]; // define scopes needed for your API
-        return this.msalService.acquireTokenSilent({ scopes: scopes });
+    public async getAccessToken(): Promise<string> {
+        const accounts = this.authService.instance.getAllAccounts();
+        const tokenResult  = await this.authService.instance.acquireTokenSilent({
+            scopes: ['api://8b70fd3b-18ce-4d8e-a91f-dbb5cf889c95/access_as_user'],
+            account: accounts[0]
+          });
+        return tokenResult.accessToken
     }
 }
