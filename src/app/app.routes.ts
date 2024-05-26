@@ -3,6 +3,7 @@ import { MsalGuard } from '@azure/msal-angular';
 import { LoginShellComponent } from './userManagementDomain/features/shellComponents/login-shell/login-shell.component';
 import { RoomManagementShellComponent } from './roomManagementDomain/features/room-management-shell/room-management-shell.component';
 import { RoomManagementComponent } from './roomManagementDomain/ui/room-management/room-management.component';
+import { DashboardShellComponent } from './shared/features/dashboard-shell/dashboard-shell/dashboard-shell.component';
 
 export const routes: Routes = [
     {
@@ -15,20 +16,17 @@ export const routes: Routes = [
         canActivate: [MsalGuard]
     },
     {
-        path: 'roommanagement',
-        component: RoomManagementShellComponent,
+        path: 'dashboard',
+        component: DashboardShellComponent,
         canActivate: [MsalGuard]
+    },
+    {
+        path:'**',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
     },
     {
         path: 'login-failed',
         component: RoomManagementComponent
     }
-//     {
-//         path: '',
-//         component: HomeComponent
-//     },
-//     {
-//         path: 'login-failed',
-//         component: FailedComponent
-//     }
 ];

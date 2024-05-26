@@ -1,0 +1,52 @@
+    <div id="container">
+      <div class="left-side">
+        <div class="logo">LOGO</div>
+        <div class="quick-links">
+          <div class="find-room"><strong>Find a room</strong></div>
+          <div class="add-room"><strong>Add a room</strong></div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="menu-container">
+          <div class="option-menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </div>
+          <div class="user-icon">
+            <mat-icon>perm_identity</mat-icon>
+          </div>
+        </div>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button (click)="logout()" mat-menu-item>
+          <span>Log out</span>
+        </button>
+        <button mat-menu-item >
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+    </div>
+
+<!--    <span style="flex: 1 1 auto;"></span>
+    <button mat-button [matMenuTriggerFor]="menu">Find a Room</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Booked in</button>
+      <button mat-menu-item>Account</button>
+      <button mat-menu-item>Logout</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item>Profile</button>
+      <button mat-menu-item>Settings</button>
+    </mat-menu>
+    <button mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+-->

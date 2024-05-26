@@ -17,7 +17,17 @@ export class RoomMamangementService {
     .pipe(
       switchMap(token => {
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.get<RoomEntity[]>(`${environment.apiUrl}WeatherForecast`, { headers: headers });
+        return this.http.get<RoomEntity[]>(`${environment.apiUrl}roommanagement`, { headers: headers });
+      })
+    );
+  }
+
+  public getRoomDetails(roomId: string): Observable<RoomEntity>{
+    return from(this.authService.getAccessToken())
+    .pipe(
+      switchMap(token => {
+        const headers = { Authorization: `Bearer ${token}` };
+        return this.http.get<RoomEntity>(`${environment.apiUrl}roommanagement/${roomId}`, { headers: headers });
       })
     );
   }

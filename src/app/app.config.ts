@@ -11,6 +11,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule} from '@angular/material/list';
 import { environment } from '../environment/environment';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideStore } from '@ngrx/store';
+import { sharedReducer } from './shared/features/store/reducer/shared.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { sharedEffects } from './shared/features/store/effects/shared.effect';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
   console.log(message);
@@ -21,7 +27,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     auth: {
       clientId: environment.msalConfig.auth.clientId,
       authority: environment.msalConfig.auth.authority,
-      redirectUri: 'http://localhost:4200/roommanagement',
+      redirectUri: 'http://localhost:4200/dashboard',
       postLogoutRedirectUri: '/'
     },
     cache: {
@@ -65,6 +71,12 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(BrowserModule, MatButtonModule, MatToolbarModule, MatListModule, MatMenuModule),
     provideNoopAnimations(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
+    provideStore({shared: sharedReducer}),
+    provideEffects([sharedEffects]),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
     {
         provide: HTTP_INTERCEPTORS,
         useClass: MsalInterceptor,
@@ -84,6 +96,6 @@ export const appConfig: ApplicationConfig = {
     },
     MsalService,
     MsalGuard,
-    MsalBroadcastService
+    MsalBroadcastService, provideAnimationsAsync(), provideAnimationsAsync()
   ]
 };

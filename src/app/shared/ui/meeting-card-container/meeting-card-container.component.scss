@@ -1,0 +1,88 @@
+.available-rooms{
+    display: flex;
+    flex-direction: column;
+    .section-title-available-rooms{
+        font-weight: 800;
+        font-size: x-large;
+        height: 46px;
+        margin-top: 63px;
+        text-align: start;
+        h1{
+            letter-spacing: normal;    
+            margin: 0;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            left: 150px;
+            top: 679px;
+            width: 50px;
+            height: 6px;
+            width: 300px;
+            background-color: #333;
+        }
+    }
+}
+.booked-by-you{
+    display: flex;
+    flex-direction: column;
+    .section-title-booked-by-you{
+        font-weight: 800;
+        font-size: x-large;
+        height: 46px;
+        margin-top: 63px;
+        text-align: start;
+        h1{
+            letter-spacing: normal;    
+            margin: 0;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            left: 150px;
+            top: 1406px;
+            width: 50px;
+            height: 6px;
+            width: 300px;
+            background-color: #333;
+        }
+    }
+}
+.booking-history{
+    display: flex;
+    flex-direction: column;
+    .section-title-booking-history{
+        font-weight: 800;
+        font-size: x-large;
+        height: 46px;
+        margin-top: 63px;
+        text-align: start;
+        h1{
+            letter-spacing: normal;    
+            margin: 0;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            left: 150px;
+            top: 1812px;
+            width: 50px;
+            height: 6px;
+            width: 300px;
+            background-color: #333;
+        }
+    }
+}
+.meeting-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    app-meeting-card{
+        margin-top: 20px;
+        border-radius: 15px;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+}

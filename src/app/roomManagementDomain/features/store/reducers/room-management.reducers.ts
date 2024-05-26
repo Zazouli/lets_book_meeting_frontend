@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { RoomEntity } from "../../../domain/room.model";
-import * as RoomsActions from "../actions/dashboard.actions";
+import * as RoomsActions from "../actions/room-management.actions";
 
 export interface State{
     rooms: RoomEntity[] | null;

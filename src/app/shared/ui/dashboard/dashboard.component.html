@@ -1,0 +1,20 @@
+<app-header (onLogout)="logout()"></app-header>
+<div class="banner">
+</div>
+<div class="container">
+    <app-meeting-card-container
+    [className]="'available-rooms'"
+    [list]="availableRooms"
+    [sectionName]="'section-title-available-rooms'"
+    [title]="'Available Meeting Rooms'"></app-meeting-card-container>
+    <app-meeting-card-container
+    [className]="'booked-by-you'"
+    [list]="bookedByYou"
+    [sectionName]="'section-title-booked-by-you'"
+    [title]="'Booked By You'"></app-meeting-card-container>
+    <app-meeting-card-container
+    [className]="'booking-history'"
+    [list]="bookedByYouHistory"
+    [sectionName]="'section-title-booking-history'"
+    [title]="'Latest Booking'"></app-meeting-card-container>
+</div>

@@ -10,17 +10,17 @@ import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { environment } from '../environment/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { DashboardShellComponent } from './shared/features/dashboard-shell/dashboard-shell/dashboard-shell.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.scss'],
     standalone: true,
-    imports: [CommonModule, MsalModule, RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatMenuModule]
+    imports: [CommonModule, MsalModule, RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatMenuModule, DashboardShellComponent]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular 17 Sample - MSAL Angular v3';
   isIframe = false;
   loginDisplay = false;
   private token = "";
