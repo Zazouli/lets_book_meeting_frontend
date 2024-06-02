@@ -1,15 +1,19 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DashboardComponent } from '../../../ui/dashboard/dashboard.component';
 import { SharedStateService } from '../../store/shared-state-service/shared-state.service';
+import { RoomSummaryModel } from '../../../domain/entities/room-summary.model';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard-shell',
   standalone: true,
-  imports: [DashboardComponent],
+  imports: [DashboardComponent, AsyncPipe],
   templateUrl: './dashboard-shell.component.html',
   styleUrl: './dashboard-shell.component.scss'
 })
 export class DashboardShellComponent implements OnInit {
+  public allRoomsSummaries$!: Observable<RoomSummaryModel[]>;
   /**
    *
    */
@@ -17,7 +21,10 @@ export class DashboardShellComponent implements OnInit {
   @Output() onLogout = new EventEmitter<void>();
 
   ngOnInit(): void {
-    this.sharedStateService.dispatchAvailableRoomsAction();
+    // this.sharedStateService.dispatchAvailableRoomsAction();
+    this.sharedStateService.dispatchLoadAllRoomSummariesAction();
+    this.allRoomsSummaries$ = this.sharedStateService.getAllRoomsSummaries();
+
   }
   public availableRooms = [{
     roomName: 'room 1',

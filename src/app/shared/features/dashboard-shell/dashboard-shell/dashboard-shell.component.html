@@ -1,5 +1,6 @@
-<app-dashboard
-[availableRooms]="availableRooms"
-[bookedByYou]="bookedByYou"
-[bookedByYouHistory]="bookedByYouHistory"
-(onLogout)="logout()"></app-dashboard>
+@if(allRoomsSummaries$ | async; as rooms)
+{
+    <app-dashboard
+    [availableRooms]="rooms"
+    (onLogout)="logout()"></app-dashboard>
+}

@@ -16,5 +16,6 @@ export const initialState: SharedState = {
 export const sharedReducer = createReducer(
   initialState,
   on(SharedActions.loadRoomDetailsSuccess, (state, { room }) => ({ ...state, room: room })),
-  on(SharedActions.availableRoomsSuccess, (state, {roomSummaries}) => ({...state, roomSummaries: roomSummaries}))
+  on(SharedActions.availableRoomsSuccess, (state, {roomSummaries}) => ({...state, roomSummaries: roomSummaries})),
+  on(SharedActions.allRoomsSummariesSuccess, (state, {roomSummaries}) => ({...state, roomSummaries: roomSummaries}),)
 ); 

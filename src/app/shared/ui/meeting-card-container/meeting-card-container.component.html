@@ -5,8 +5,9 @@
     <div class="meeting-cards">
         @for (item of list; track $index) {
             <app-meeting-card
-            [roomLocation]="item.roomLocation"
-            [roomName]="item.roomName"
+            [roomId]="item?.roomId"
+            [roomLocation]="item?.roomLocation"
+            [roomName]="item?.roomName"
             ></app-meeting-card>
         }
     </div>

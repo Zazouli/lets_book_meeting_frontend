@@ -4,6 +4,7 @@ import { LoginShellComponent } from './userManagementDomain/features/shellCompon
 import { RoomManagementShellComponent } from './roomManagementDomain/features/room-management-shell/room-management-shell.component';
 import { RoomManagementComponent } from './roomManagementDomain/ui/room-management/room-management.component';
 import { DashboardShellComponent } from './shared/features/dashboard-shell/dashboard-shell/dashboard-shell.component';
+import { BookMeetingRoomShellComponent } from './bookingManagementDomain/features/book-meeting-room-shell/book-meeting-room-shell.component';
 
 export const routes: Routes = [
     {
@@ -16,17 +17,21 @@ export const routes: Routes = [
         canActivate: [MsalGuard]
     },
     {
+        path: "bookmanagement/:id",
+        component: BookMeetingRoomShellComponent,
+        canActivate: [MsalGuard]
+    },
+    {
+        path: 'login-failed',
+        component: RoomManagementComponent
+    },{
         path: 'dashboard',
         component: DashboardShellComponent,
         canActivate: [MsalGuard]
     },
     {
-        path:'**',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
+        path: '**',
+        component: DashboardShellComponent,
+        canActivate: [MsalGuard]
     },
-    {
-        path: 'login-failed',
-        component: RoomManagementComponent
-    }
 ];

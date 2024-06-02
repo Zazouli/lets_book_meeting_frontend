@@ -13,8 +13,9 @@
   </mat-menu>
 
   @if (loginDisplay) {
-    <app-dashboard-shell (onLogout)="logout(true)"></app-dashboard-shell>
+  
   }
+  <router-outlet></router-outlet>
   <!--<button mat-raised-button [matMenuTriggerFor]="logoutMenu">Logout</button>
   }
   <mat-menu #logoutMenu="matMenu">

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MeetingCardComponent } from '../meeting-card/meeting-card.component';
+import { RoomSummaryModel } from '../../domain/entities/room-summary.model';
 
 @Component({
   selector: 'app-meeting-card-container',
@@ -10,7 +11,7 @@ import { MeetingCardComponent } from '../meeting-card/meeting-card.component';
 })
 export class MeetingCardContainerComponent {
   @Input() public className!: string;
-  @Input() public list!: any[];
+  @Input() public list!: RoomSummaryModel[] | null;
   @Input() public sectionName!: string;
   @Input() public title!: string;
 }

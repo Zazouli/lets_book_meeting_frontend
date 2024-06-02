@@ -1,6 +1,7 @@
-<a href="#" class="card">
+<a [routerLink]="link" class="card">
     <div class="card-content">
       <h2>{{roomName}}</h2>
       <p>{{roomLocation}}</p>
     </div>
   </a>
+  <router-outlet></router-outlet>

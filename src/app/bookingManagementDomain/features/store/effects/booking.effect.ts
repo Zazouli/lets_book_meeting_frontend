@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { of } from 'rxjs';
-import * as SharedActions from '../../../../shared/features/store/actions/shared.actions'
+import * as BookAmeetingRoom from "../actions/book-meeting-room.action";
 import { BookingManagementService } from '../../../api/booking-management-service.service';
 
 @Injectable()
@@ -14,11 +13,11 @@ export class BookingEffects {
 
   bookRoom$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(SharedActions.bookRoom),
+      ofType(BookAmeetingRoom.bookRoom),
       mergeMap(action =>
-        this.bookingService.bookRoom(action.bookMeetingRoom).pipe(
-          map(bookingConfirmation => SharedActions.bookRoomSuccess()),
-          catchError(() => of({ type: '[Shared] Book Room Failed' }))
+        this.bookingService.bookRoom(action.bookMeetingRoomRequest).pipe(
+          map(_ => BookAmeetingRoom.bookRoomSuccess()),
+          catchError(async (error) => BookAmeetingRoom.bookRoomFail(error))
         )
       )
     )

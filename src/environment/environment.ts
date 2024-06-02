@@ -10,5 +10,5 @@ export const environment = {
         scopes: ['openid', 'profile', 'User.Read'],
         uri: 'https://graph.microsoft.com/v1.0/me'
     },
-    apiUrl: "http://localhost:32783/"
+    apiUrl: "http://localhost:32771/"
 };

@@ -17,7 +17,7 @@ export class BookingManagementService {
     .pipe(
       switchMap(token => {
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.post(`${environment.apiUrl}bookingmanagement`,{bookingDetails: bookMeetingRoom}, { headers: headers });
+        return this.http.post(`${environment.apiUrl}api/bookingmanagement`,bookMeetingRoom, { headers: headers });
       })
     );
   }

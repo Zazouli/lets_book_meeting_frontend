@@ -13,15 +13,6 @@ export const loadRoomDetailsSuccess = createAction(
   props<{ room: RoomEntity }>()
 );
 
-export const bookRoom = createAction(
-  '[Shared] Book Room',
-  props<{ bookMeetingRoom: CreateBookingRequestModule}>()
-);
-
-export const bookRoomSuccess = createAction(
-    '[Shared] Book Room Success',
-  );
-
 export const availableRooms = createAction(
     '[Shared] Load Available Rooms'
 );
@@ -29,4 +20,13 @@ export const availableRooms = createAction(
 export const availableRoomsSuccess = createAction(
     '[Shared] Load Available Rooms Success',
     props<{roomSummaries: RoomSummaryModel[]}>()
+);
+
+export const allRoomsSummaries = createAction(
+  '[Shared] Load all Rooms summaries'
+);
+
+export const allRoomsSummariesSuccess = createAction(
+  '[Shared] Load All Rooms Summaries Success',
+  props<{roomSummaries: RoomSummaryModel[]}>()
 );

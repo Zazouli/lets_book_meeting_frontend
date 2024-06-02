@@ -17,6 +17,8 @@ import { sharedReducer } from './shared/features/store/reducer/shared.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { sharedEffects } from './shared/features/store/effects/shared.effect';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { bookMeetingReducer } from './bookingManagementDomain/features/store/reducers/booking-meeting-room.reducer';
+import { BookingEffects } from './bookingManagementDomain/features/store/effects/booking.effect';
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
   console.log(message);
@@ -71,8 +73,9 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(BrowserModule, MatButtonModule, MatToolbarModule, MatListModule, MatMenuModule),
     provideNoopAnimations(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
+    provideStore({bookMeetingReducer: bookMeetingReducer}),
     provideStore({shared: sharedReducer}),
-    provideEffects([sharedEffects]),
+    provideEffects([sharedEffects, BookingEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: environment.production

@@ -1,0 +1,6 @@
+<app-header></app-header>
+@if (roomSummary$ | async; as summary) {
+    <app-book-meeting-room
+    [roomSummary]="summary"
+    (onBookMeetingRoom)="bookMeetingRoom()"></app-book-meeting-room>
+}

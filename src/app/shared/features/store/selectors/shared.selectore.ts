@@ -6,5 +6,10 @@ export const selectSharedState = createFeatureSelector<SharedState>('shared');
 
 export const selectRoomDetails = createSelector(
   selectSharedState,
-  (state: SharedState) => state.roomSummeries
+  (state: SharedState) => state.room
 );
+
+export const selectRoomSummaries = createSelector(
+    selectSharedState,
+    (state: SharedState) => state.roomSummaries
+  );

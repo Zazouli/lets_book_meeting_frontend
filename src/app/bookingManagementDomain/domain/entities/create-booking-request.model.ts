@@ -1,4 +1,5 @@
 export interface CreateBookingRequestModule{
     roomId: string;
-    meetingDuration: number;
+    startDate: Date,
+    endDate: Date
 }

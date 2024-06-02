@@ -22,4 +22,15 @@ export class SharedService {
     );
   }
 
+  public getAllRoomSummaries(): Observable<RoomSummaryModel[]>{
+    return from(this.authService.getAccessToken())
+    .pipe(
+      switchMap(token => {
+        const headers = { Authorization: `Bearer ${token}` };
+        console.log(`request success roken ${token}`)
+        return this.http.get<RoomSummaryModel[]>(`${environment.apiUrl}api/getallsummaries`, { headers: headers });
+      })
+    );
+  }
+
 }
