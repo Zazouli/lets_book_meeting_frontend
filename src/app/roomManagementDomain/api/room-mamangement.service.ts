@@ -4,6 +4,7 @@ import { Observable, from, switchMap } from 'rxjs';
 import { RoomEntity } from '../domain/room.model';
 import { AuthService } from '../../core/auth-service.service';
 import { environment } from '../../../environment/environment';
+import { RoomDetailsDTO } from '../domain/room-details-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,16 @@ export class RoomMamangementService {
       switchMap(token => {
         const headers = { Authorization: `Bearer ${token}` };
         return this.http.get<RoomEntity>(`${environment.apiUrl}roommanagement/${roomId}`, { headers: headers });
+      })
+    );
+  }
+
+  public createRoom(room: RoomDetailsDTO): Observable<RoomDetailsDTO>{
+    return from(this.authService.getAccessToken())
+    .pipe(
+      switchMap(token => {
+        const headers = { Authorization: `Bearer ${token}` };
+        return this.http.post<RoomDetailsDTO>(`${environment.apiUrl}api/roommanagement/createroom`, room, { headers: headers });
       })
     );
   }

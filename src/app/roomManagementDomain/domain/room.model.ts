@@ -1,9 +1,9 @@
-import { Locations } from "./locatio.enum";
 
 export interface RoomEntity
 {
     roomId: string;
     roomName: string;
-    location: Locations;
+    roomDescription: string;
     capacity: number;
+    location: string;
 }

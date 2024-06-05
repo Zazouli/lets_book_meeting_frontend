@@ -17,4 +17,14 @@ export class AuthService {
           });
         return tokenResult.accessToken
     }
+
+    logout(popup?: boolean) {
+        if (popup) {
+          this.authService.logoutPopup({
+            mainWindowRedirectUri: "/"
+          });
+        } else {
+          this.authService.logoutRedirect();
+        }
+      }
 }

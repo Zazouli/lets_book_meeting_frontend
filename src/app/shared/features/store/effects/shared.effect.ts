@@ -34,4 +34,28 @@ export class sharedEffects {
       )
     )
   );
+
+  searchRoomByDate$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(SharedActions.searchRoomByDateAction),
+    mergeMap(action =>
+      this.sharedService.searchRoomByDate(action.date, action.meetingDuration).pipe(
+        map(rs => SharedActions.searchRoomByDateSuccessAction({roomSummaries : rs})),
+        catchError(err => of({ type: '[Shared] Load all rooms Failed' }))
+      )
+    )
+  )
+  )
+
+  bookedByUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(SharedActions.loadBookedByUser),
+      mergeMap(action =>
+        this.sharedService.bookedByUser().pipe(
+          map(bookedByUser => SharedActions.loadBookedByUserSuccess({bookedByUser : bookedByUser})),
+          catchError(err => of({ type: '[Shared] Load Booked By User Failed' }))
+        )
+      )
+    )
+  )
 }

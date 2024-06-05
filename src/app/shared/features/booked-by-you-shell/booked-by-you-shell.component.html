@@ -1,0 +1,5 @@
+<app-header (onLogout)="logout()"></app-header>
+@if(bookedByUser$ | async; as bookedByUser){
+    <app-booked-by-you
+    [bookedByUser]="bookedByUser"></app-booked-by-you>
+}

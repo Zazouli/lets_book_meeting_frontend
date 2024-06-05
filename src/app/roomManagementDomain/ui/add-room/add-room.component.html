@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <div class="container">
+        <h1>Add/Modify Room</h1>
+        <label for="roomName">Room Name</label>
+        <input type="text" id="roomName" name="roomName" [(ngModel)]="roomName" placeholder="Enter room name">
+        
+        <label for="description">Description</label>
+        <textarea id="description" [(ngModel)]="roomDescription" name="description" placeholder="Enter room description"></textarea>
+        
+        <div class="capacity-container">
+            <button id="decrease" (click)="changeCapacity(-1)">-</button>
+            <input type="number" id="capacity" name="capacity" [(ngModel)]="roomCapacity" min="0" readonly>
+            <button id="increase" (click)="changeCapacity(1)">+</button>
+            <span>Capacity</span>
+        </div>
+        
+        <button class="save-button" (click)="saveRoom()">Save</button>
+    </div>
+</div>

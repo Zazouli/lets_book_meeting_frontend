@@ -1,0 +1,10 @@
+<app-header (onLogout)="logout()"></app-header>
+<app-search-available-room
+(onSearch)="search($event)"></app-search-available-room>
+
+@if(roomSummaries$ | async; as summaries){
+    <app-meeting-card-container
+    [className]="'center-container'"
+    [className]="'available-rooms'"
+    [list]="summaries"></app-meeting-card-container>
+}

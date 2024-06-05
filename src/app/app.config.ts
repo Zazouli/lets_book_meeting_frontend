@@ -12,13 +12,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule} from '@angular/material/list';
 import { environment } from '../environment/environment';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideStore } from '@ngrx/store';
+import { provideState, provideStore } from '@ngrx/store';
 import { sharedReducer } from './shared/features/store/reducer/shared.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { sharedEffects } from './shared/features/store/effects/shared.effect';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { bookMeetingReducer } from './bookingManagementDomain/features/store/reducers/booking-meeting-room.reducer';
 import { BookingEffects } from './bookingManagementDomain/features/store/effects/booking.effect';
+import { RoomEffects } from './roomManagementDomain/features/store/effects/room-management.effects';
+import { roomsReducer } from './roomManagementDomain/features/store/reducers/room-management.reducers';
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
   console.log(message);
@@ -66,16 +68,23 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     loginFailedRoute: '/login-failed'
   };
 }
-
+const reducers={
+  bookMeeting: bookMeetingReducer,
+  roomsReducer: roomsReducer,
+  shared: sharedReducer
+}
+const effects = [sharedEffects, BookingEffects, RoomEffects];
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
     importProvidersFrom(BrowserModule, MatButtonModule, MatToolbarModule, MatListModule, MatMenuModule),
     provideNoopAnimations(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
-    provideStore({bookMeetingReducer: bookMeetingReducer}),
-    provideStore({shared: sharedReducer}),
-    provideEffects([sharedEffects, BookingEffects]),
+    provideStore(),
+    provideState({name: 'bookState', reducer: bookMeetingReducer}),
+    provideState({name: 'roomsState', reducer: roomsReducer}),
+    provideState({name: 'sharedState', reducer: sharedReducer}),
+    provideEffects([sharedEffects, BookingEffects, RoomEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: environment.production

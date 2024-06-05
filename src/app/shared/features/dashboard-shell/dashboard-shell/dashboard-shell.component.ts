@@ -4,6 +4,7 @@ import { SharedStateService } from '../../store/shared-state-service/shared-stat
 import { RoomSummaryModel } from '../../../domain/entities/room-summary.model';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { AuthService } from '../../../../core/auth-service.service';
 
 @Component({
   selector: 'app-dashboard-shell',
@@ -17,8 +18,7 @@ export class DashboardShellComponent implements OnInit {
   /**
    *
    */
-  constructor(private sharedStateService: SharedStateService) {}
-  @Output() onLogout = new EventEmitter<void>();
+  constructor(private sharedStateService: SharedStateService, private authService: AuthService) {}
 
   ngOnInit(): void {
     // this.sharedStateService.dispatchAvailableRoomsAction();
@@ -76,6 +76,6 @@ export class DashboardShellComponent implements OnInit {
     }];
   public logout()
   {
-    this.onLogout.emit();
+    this.authService.logout();
   }
 }
