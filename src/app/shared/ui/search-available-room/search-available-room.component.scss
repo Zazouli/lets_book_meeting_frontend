@@ -1,0 +1,55 @@
+.wrapper {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    margin: 0;
+}
+.container {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.info label {
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+.info input {
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    padding: 4px 8px;
+    text-align: center;
+    width: 150px;
+}
+.divider {
+    width: 1px;
+    height: 50px;
+    background-color: #d1d5db;
+}
+.search-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #4b5563;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.search-icon svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}

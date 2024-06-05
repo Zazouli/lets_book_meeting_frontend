@@ -3,11 +3,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule ],
+  imports: [MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, RouterOutlet, RouterLink, RouterLinkActive ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -21,6 +22,7 @@ export class HeaderComponent {
   }
 
   public logout(){
+    console.log('logging out app-header');
     this.onLogout.emit();
   }
 }

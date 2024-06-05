@@ -1,0 +1,28 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="header">Booked By You</div>
+        <div class="tabs">
+            <div class="tab tab-active">Completed</div>
+        </div>
+        @for (b of bookedByUser; track $index){
+            <div class="bookings">
+                <div class="booking-item">
+                    <div class="booking-info">
+                        <h2>{{b.roomName}}</h2>
+                        <p>Start  Date : {{b.startDate | date:'yyyy/MM/dd hh:mm'}} | End Date : {{b.endDate | date:'yyyy/MM/dd hh:mm'}}</p>
+                    </div>
+                    <img src="https://img.icons8.com/ios-glyphs/30/000000/delete-sign.png" class="delete-icon" alt="delete">
+                </div>
+                <!--
+                <div class="booking-item">
+                    <div class="booking-info">
+                        <h2>Meeting Room 2</h2>
+                        <p>13 Mar 2021 at 2:00 PM until 4 PM</p>
+                    </div>
+                    <img src="https://img.icons8.com/ios-glyphs/30/000000/delete-sign.png" class="delete-icon" alt="delete">
+                </div>
+            </div>
+        -->
+    </div>
+    }
+</div>

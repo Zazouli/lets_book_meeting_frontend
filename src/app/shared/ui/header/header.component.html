@@ -2,8 +2,8 @@
       <div class="left-side">
         <div class="logo">LOGO</div>
         <div class="quick-links">
-          <div class="find-room"><strong>Find a room</strong></div>
-          <div class="add-room"><strong>Add a room</strong></div>
+          <div class="find-room" [routerLink]="'/findroom'"><strong>Find a room</strong></div>
+          <div class="add-room" [routerLink]="'/addroom'"><strong>Add a room</strong></div>
         </div>
       </div>
       <div class="right-side">
@@ -22,8 +22,8 @@
         <button (click)="logout()" mat-menu-item>
           <span>Log out</span>
         </button>
-        <button mat-menu-item >
-          <span>Check voice mail</span>
+        <button mat-menu-item [routerLink]="'/bookedbyyou'">
+          <span>Booked by you</span>
         </button>
         <button mat-menu-item>
           <span>Disable alerts</span>
